@@ -3,7 +3,32 @@
 A Wootric SDK Wrapper for Flutter.
 https://www.wootric.com
 
-## Getting Started
+#Example
+
+1. Import flutter-wootric 
+2. Init the library with your credentials
+
+```
+final wootric= FlutterWootric(
+                clientId: "<CLIENT_ID>", //Your Wootric Client ID
+                accountToken: "<ACCOUNT_TOKEN>", //Your Wootric Account Token
+                email: "test@example.com",
+                userId: "1234567",
+                properties: {
+                  "language": "US",
+                  "app-version": "1.0.15",
+                },
+              );
+              
+```
+
+3. Call showWootricSurvey
+
+```
+wootric.showWootricSurvey;
+```
+
+## Getting Started with Flutter
 
 This project is a starting point for a Flutter
 [plug-in package](https://flutter.dev/developing-packages/),

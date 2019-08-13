@@ -10,15 +10,14 @@ class FlutterWootric {
 
   static const MethodChannel _channel = const MethodChannel('flutter_wootric');
 
-  FlutterWootric(
-      {@required this.clientId,
-      @required this.accountToken,
-      @required this.email,
-      this.userId: "",
-      this.properties})
-      : assert(clientId != null),
-        assert(accountToken != null),
-        assert(email != null);
+  FlutterWootric({
+    @required this.clientId,
+    @required this.accountToken,
+    this.email: "",
+    this.userId: "",
+    this.properties,
+  })  : assert(clientId != null),
+        assert(accountToken != null);
 
   get showWootricSurvey async {
     try {

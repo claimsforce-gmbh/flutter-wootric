@@ -1,3 +1,11 @@
+## 0.0.4
+
+* Handles unknown email and userid in the wootric way 
+
+## 0.0.3
+
+* Changes email from required to optional 
+
 ## 0.0.2
 
 * Extends description.

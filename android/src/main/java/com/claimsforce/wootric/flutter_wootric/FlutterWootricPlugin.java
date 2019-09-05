@@ -36,15 +36,20 @@ public class FlutterWootricPlugin implements MethodCallHandler {
       String accountToken = call.argument("accountToken");
       String email = call.argument("email");
       String userId = call.argument("userId");
-      long ut2 = System.currentTimeMillis() / 1000L;
       
       Wootric wootric = Wootric.init((Activity) context, clientId, accountToken);
-      wootric.setEndUserEmail(email);
-      wootric.setEndUserCreatedAt(1234567890);
-      wootric.setSurveyImmediately(true);
-      if(userId.length() > 0) {
+      if(email.length() > 0) {
+        wootric.setEndUserEmail(email);
+        if(userId.length() > 0) {
+          wootric.setEndUserExternalId(userId);
+        } 
+      } else if (userId.length > 0) {
         wootric.setEndUserExternalId(userId);
-      } 
+        if(email.length() == 0) {
+          wootric.setEndUserEmail(userId);
+        }
+      }
+      wootric.setSurveyImmediately(true);
       wootric.setProperties((HashMap<String,String>) call.argument("properties"));
       wootric.survey();
     }

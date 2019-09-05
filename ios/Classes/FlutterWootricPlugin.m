@@ -19,14 +19,19 @@
     NSString *email = call.arguments[@"email"];
     NSString *userId = call.arguments[@"userId"];
     NSDictionary *properties = call.arguments[@"properties"];
-    NSNumber *unixtime = [NSNumber numberWithDouble: [[NSDate date] timeIntervalSince1970]];
     UIViewController *rootController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     [Wootric configureWithClientID:clientId accountToken: accountToken];
-    [Wootric setEndUserEmail: email];
-    if([userId length] > 0) {
+    if([email length] > 0) {
+      [Wootric setEndUserEmail: email];
+      if([userId length] > 0) {
+        [Wootric setEndUserExternalId: userId];
+      }
+    } else if([userId length] > 0) {
       [Wootric setEndUserExternalId: userId];
+      if([email length] == 0) {
+        [Wootric setEndUserEmail: userId];
+      }
     }
-    [Wootric setEndUserCreatedAt: unixtime];
     [Wootric setEndUserProperties: properties];
     [Wootric forceSurvey:YES];
     [Wootric surveyImmediately: YES];

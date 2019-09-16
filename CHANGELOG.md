@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Java compile fix
+
 ## 0.0.4
 
 * Handles unknown email and userid in the wootric way 

@@ -23,7 +23,7 @@
   } else if ([@"setEndUserExternalId" isEqualToString:call.method]) {
     NSString *endUserExternalId = call.arguments[@"endUserExternalId"];
     [Wootric setEndUserExternalId: endUserExternalId];
-  } else if ([@"setEndUserPropteries" isEqualToString:call.method]) {
+  } else if ([@"setEndUserProperties" isEqualToString:call.method]) {
     NSDictionary *endUserProperties = call.arguments[@"endUserProperties"];
     [Wootric setEndUserProperties: endUserProperties];
   } else if ([@"forceSurvey" isEqualToString:call.method]) {
@@ -38,9 +38,6 @@
   } else if ([@"setFirstSurveyAfter" isEqualToString:call.method]) {
     NSNumber *numberOfDays = call.arguments[@"numberOfDays"];
     [Wootric setFirstSurveyAfter: numberOfDays];
-  } else if ([@"setProductNameForEndUser" isEqualToString:call.method]) {
-    NSString *productName = call.arguments[@"productName"];
-    [Wootric setProductNameForEndUser: productName];
   } else if ([@"setSurveyedDefault" isEqualToString:call.method]) {
     NSNumber* surveyedDefault = call.arguments[@"surveyedDefault"];
     [Wootric setSurveyedDefault: [surveyedDefault boolValue]];
@@ -59,13 +56,10 @@
     [Wootric setLogLevelError];
   } else if ([@"setLogLevelVerbose" isEqualToString:call.method]) {
     [Wootric setLogLevelVerbose];
-  } else if ([@"setCustomQuestion" isEqualToString:call.method]) {
-    NSString *question = call.arguments[@"question"];
-    [Wootric setCustomQuestion: question];
-  } else if ([@"setCustomFinalThankYou" isEqualToString:call.method]) {
-    NSString *thankYou = call.arguments[@"thankYou"];
-    [Wootric setCustomFinalThankYou: thankYou];
-  }else if ([@"showWootricSurvey" isEqualToString:call.method]) {
+  } else if ([@"setLanguageCode" isEqualToString:call.method]) {
+    NSString *languageCode = call.arguments[@"languageCode"];
+    [Wootric setCustomLanguage: languageCode];
+  } else if ([@"showWootricSurvey" isEqualToString:call.method]) {
     UIViewController *rootController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     [Wootric showSurveyInViewController:rootController];
   }

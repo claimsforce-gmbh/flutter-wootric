@@ -21,8 +21,9 @@ class _MyAppState extends State<MyApp> {
     FlutterWootric.setEndUserExternalId('123456789');
     FlutterWootric.setEndUserPropteries({
       'country': 'Germany',
-      'age': 36,
+      'age': "36",
     });
+    FlutterWootric.surveyImmediately(true);
     FlutterWootric.forceSurvey(true);
     FlutterWootric.showSurvey();
   }

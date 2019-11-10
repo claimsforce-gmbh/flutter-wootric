@@ -28,9 +28,9 @@ class FlutterWootric {
     });
   }
 
-  static setEndUserPropteries(Map<String, dynamic> endUserProperties) {
+  static setEndUserPropteries(Map<String, String> endUserProperties) {
     assert(endUserProperties != null);
-    _channel.invokeMethod('setEndUserPropteries', {
+    _channel.invokeMethod('setEndUserProperties', {
       'endUserProperties': endUserProperties,
     });
   }
@@ -59,12 +59,6 @@ class FlutterWootric {
     });
   }
 
-  static setProductNameForEndUser(String productName) {
-    _channel.invokeMethod('setProductNameForEndUser', {
-      'productName': productName,
-    });
-  }
-  
   static setSurveyedDefault(bool surveyedDefault) {
     _channel.invokeMethod('setSurveyedDefault', {
       'surveyedDefault': surveyedDefault,
@@ -101,15 +95,9 @@ class FlutterWootric {
     _channel.invokeMethod('setLogLevelVerbose');
   }
 
-  static setCustomQuestion(String question) {
-    _channel.invokeMethod('setCustomQuestion', {
-      'question': question,
-    });
-  }
-
-  static setCustomFinalThankYou(String thankYou) {
-    _channel.invokeMethod('setCustomFinalThankYou', {
-      'thankYou': thankYou,
+  static setLanguageCode(String languageCode) {
+    _channel.invokeMethod('setLanguageCode', {
+      'languageCode': languageCode,
     });
   }
 

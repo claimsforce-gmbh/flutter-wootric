@@ -6,7 +6,7 @@ PODS:
   - WootricSDK (0.13.0)
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios-release`)
+  - Flutter (from `.symlinks/flutter/ios`)
   - flutter_wootric (from `.symlinks/plugins/flutter_wootric/ios`)
 
 SPEC REPOS:
@@ -15,7 +15,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios-release"
+    :path: ".symlinks/flutter/ios"
   flutter_wootric:
     :path: ".symlinks/plugins/flutter_wootric/ios"
 

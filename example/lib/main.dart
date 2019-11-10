@@ -14,16 +14,15 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     FlutterWootric.configure(
-      clientId: "e9324ead717508c77c02cbfb2921685029948a7dae1f876b95e98b7abdf1ee27", //TODO Your Wootric Client ID
-      accountToken: "NPS-0df148a5", //TODO Your Wootric Account Token
+      clientId: "<CLIENT_ID>", //TODO Your Wootric Client ID
+      accountToken: "<ACCOUNT_TOKEN>", //TODO Your Wootric Account Token
     );
-    FlutterWootric.setEndUserEmail('kevin.luecke@me.com');
+    FlutterWootric.setEndUserEmail('example@test.com');
     FlutterWootric.setEndUserExternalId('123456789');
     FlutterWootric.setEndUserPropteries({
       'country': 'Germany',
       'age': "36",
     });
-    FlutterWootric.surveyImmediately(true);
     FlutterWootric.forceSurvey(true);
     FlutterWootric.showSurvey();
   }

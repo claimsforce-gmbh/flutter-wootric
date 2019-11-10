@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_wootric'
-  s.version          = '0.0.1'
+  s.version          = '0.1.0'
   s.summary          = 'Wrapper around Wootric SDK.'
   s.description      = <<-DESC
 Wrapper around Wootric SDK.

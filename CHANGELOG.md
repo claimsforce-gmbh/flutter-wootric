@@ -1,3 +1,8 @@
+## 0.1.0
+
+* Follows original SDK API 
+* Added missing features 
+
 ## 0.0.5
 
 * Java compile fix

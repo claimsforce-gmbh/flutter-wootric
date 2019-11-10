@@ -13,6 +13,18 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    FlutterWootric.configure(
+      clientId: "<CLIENT_ID>", //TODO Your Wootric Client ID
+      accountToken: "<ACCOUNT_TOKEN>", //TODO Your Wootric Account Token
+    );
+    FlutterWootric.setEndUserEmail('example@test.com');
+    FlutterWootric.setEndUserExternalId('123456789');
+    FlutterWootric.setEndUserPropteries({
+      'country': 'Germany',
+      'age': "36",
+    });
+    FlutterWootric.forceSurvey(true);
+    FlutterWootric.showSurvey();
   }
 
   @override
@@ -24,19 +36,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: MaterialButton(
-            onPressed: () {
-              final wootric= FlutterWootric(
-                clientId: "<CLIENT_ID>", //Your Wootric Client ID
-                accountToken: "<ACCOUNT_TOKEN>", //Your Wootric Account Token
-                email: "test@example.com", //The users mail
-                userId: "1234567",
-                properties: {
-                  "country": "Germany",
-                  "app-version": "1.0.15",
-                },
-              );
-              wootric.showWootricSurvey;
-            },
+            onPressed: null,
             child: Text('Show Wootric Survey'),
           ),
         ),

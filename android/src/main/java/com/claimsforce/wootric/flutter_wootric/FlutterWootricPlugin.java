@@ -53,7 +53,7 @@ public class FlutterWootricPlugin implements MethodCallHandler {
       boolean forceSurvey = call.argument("forceSurvey");
       wootric.setSurveyImmediately(forceSurvey);
     } else if(call.method.equals("setEndUserCreatedAt")) {
-      long endUserCreatedAt = call.argument("endUserCreatedAt");
+      int endUserCreatedAt = call.argument("endUserCreatedAt");
       wootric.setEndUserCreatedAt(endUserCreatedAt);
     } else if(call.method.equals("setFirstSurveyAfter")) {
       int numberOfDays = call.argument("numberOfDays");

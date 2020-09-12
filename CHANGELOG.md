@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Typo fixed
+
 ## 0.1.1
 
 * Java timestamp usage fixed

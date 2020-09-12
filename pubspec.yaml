@@ -1,7 +1,6 @@
 name: flutter_wootric
 description: A Wootric SDK Wrapper for Flutter to support in app NPS collection. You need as minimumn a free Wootric Account with valid ClientId and AccountToken.
 version: 0.1.1
-author: Kevin Luecke <kevin@claimsforce.com>
 homepage: https://www.claimsforce.com
 repository: https://github.com/claimsforce-gmbh/flutter-wootric
 issue_tracker: https://github.com/claimsforce-gmbh/flutter-wootric/issues
@@ -9,6 +8,7 @@ documentation: https://github.com/claimsforce-gmbh/flutter-wootric#readme
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.12.13+hotfix.4 <2.0.0"
 
 dependencies:
   flutter:
@@ -28,8 +28,12 @@ flutter:
   # be modified. They are used by the tooling to maintain consistency when
   # adding or updating assets for this project.
   plugin:
-    androidPackage: com.claimsforce.wootric.flutter_wootric
-    pluginClass: FlutterWootricPlugin
+    platforms:
+      android:
+        package: com.claimsforce.wootric.flutter_wootric
+        pluginClass: FlutterWootricPlugin
+      ios:
+        pluginClass: FlutterSegmentPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

@@ -1,8 +1,11 @@
 name: flutter_wootric
 description: A Wootric SDK Wrapper for Flutter to support in app NPS collection. You need as minimumn a free Wootric Account with valid ClientId and AccountToken.
-version: 0.1.0
+version: 0.1.1
 author: Kevin Luecke <kevin@claimsforce.com>
 homepage: https://www.claimsforce.com
+repository: https://github.com/claimsforce-gmbh/flutter-wootric
+issue_tracker: https://github.com/claimsforce-gmbh/flutter-wootric/issues
+documentation: https://github.com/claimsforce-gmbh/flutter-wootric#readme
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

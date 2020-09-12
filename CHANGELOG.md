@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Java timestamp usage fixed
+
 ## 0.1.0
 
 * Follows original SDK API 

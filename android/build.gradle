@@ -33,6 +33,6 @@ android {
     }
 
     dependencies {
-        implementation 'com.wootric:wootric-sdk-android:2.13.0'
+        implementation 'com.wootric:wootric-sdk-android:2.19.0'
     }
 }

@@ -1,6 +1,6 @@
-# flutter_wootric_example
+# wootric_example
 
-Demonstrates how to use the flutter_wootric plugin.
+Demonstrates how to use the wootric plugin.
 
 ## Getting Started
 

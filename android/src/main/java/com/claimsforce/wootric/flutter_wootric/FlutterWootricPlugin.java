@@ -25,74 +25,87 @@ public class FlutterWootricPlugin implements FlutterPlugin, MethodCallHandler, A
   @Override
   public void onAttachedToActivity(@NonNull ActivityPluginBinding flutterPluginBinding) {
     context = flutterPluginBinding.getActivity();
-    //channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_wootric");
     channel.setMethodCallHandler(this);
   }
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_wootric");
-    //channel.setMethodCallHandler(this);
   }
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    }
-    else if (call.method.equals("configure")) {
-      String clientId = call.argument("clientId");
-      String accountToken = call.argument("accountToken");
-      wootric = Wootric.init(context, clientId, accountToken);
-    }
-    else if (call.method.equals("setEndUserEmail")) {
-      String endUserEmail = call.argument("endUserEmail");
-      wootric.setEndUserEmail(endUserEmail);
-    }
-    else if (call.method.equals("setEndUserExternalId")) {
-      String endUserExternalId = call.argument("endUserExternalId");
-      wootric.setEndUserExternalId(endUserExternalId);
-    }
-    else if (call.method.equals("setEndUserProperties")) {
-      wootric.setProperties((HashMap<String, String>) call.argument("endUserProperties"));
-    }
-    else if (call.method.equals("surveyImmediately")) {
-      boolean surveyImmediately = call.argument("surveyImmediately");
-      wootric.setSurveyImmediately(surveyImmediately);
-    }
-    else if (call.method.equals("forceSurvey")) {
-      boolean forceSurvey = call.argument("forceSurvey");
-      wootric.setSurveyImmediately(forceSurvey);
-    }
-    else if (call.method.equals("setEndUserCreatedAt")) {
-      int endUserCreatedAt = call.argument("endUserCreatedAt");
-      wootric.setEndUserCreatedAt(endUserCreatedAt);
-    }
-    else if (call.method.equals("setFirstSurveyAfter")) {
-      int numberOfDays = call.argument("numberOfDays");
-      wootric.setFirstSurveyDelay(numberOfDays);
-    }
-    else if (call.method.equals("passScoreAndTextToURL")) {
-      boolean passScoreAndTextToURL = call.argument("passScoreAndTextToURL");
-      WootricCustomThankYou customThankYou = new WootricCustomThankYou();
-      customThankYou.setScoreInUrl(passScoreAndTextToURL);
-      customThankYou.setCommentInUrl(passScoreAndTextToURL);
-      wootric.setCustomThankYou(customThankYou);
-    }
-    else if (call.method.equals("showOptOut")) {
-      boolean showOptOut = call.argument("showOptOut");
-      wootric.setShowOptOut(showOptOut);
-    }
-    else if (call.method.equals("skipFeedbackScreenForPromoter")) {
-      boolean skipFeedbackScreenForPromoter = call.argument("skipFeedbackScreenForPromoter");
-      wootric.shouldSkipFollowupScreenForPromoters(skipFeedbackScreenForPromoter);
-    }
-    else if (call.method.equals("setLanguageCode")) {
-      String languageCode = call.argument("languageCode");
-      wootric.setLanguageCode(languageCode);
-    }
-    else if (call.method.equals("showWootricSurvey")) {
-      wootric.survey();
+    switch (call.method) {
+      case "getPlatformVersion":
+        result.success("Android " + android.os.Build.VERSION.RELEASE);
+        break;
+      case "configure":
+        String clientId = call.argument("clientId");
+        String accountToken = call.argument("accountToken");
+        if (clientId == null || accountToken == null) break;
+        wootric = Wootric.init(context, clientId, accountToken);
+        break;
+      case "setEndUserEmail":
+        String endUserEmail = call.argument("endUserEmail");
+        if (endUserEmail == null) break;
+        wootric.setEndUserEmail(endUserEmail);
+        break;
+      case "setEndUserExternalId":
+        String endUserExternalId = call.argument("endUserExternalId");
+        if (endUserExternalId == null) break;
+        wootric.setEndUserExternalId(endUserExternalId);
+        break;
+      case "setEndUserProperties":
+        HashMap<String, String> endUserProperties = call.argument("endUserProperties");
+        if (endUserProperties == null) break;
+        wootric.setProperties(endUserProperties);
+        break;
+      case "surveyImmediately":
+        Boolean surveyImmediately = call.argument("surveyImmediately");
+        if (surveyImmediately == null) break;
+        wootric.setSurveyImmediately(surveyImmediately);
+        break;
+      case "forceSurvey":
+        Boolean forceSurvey = call.argument("forceSurvey");
+        if (forceSurvey == null) break;
+        wootric.setSurveyImmediately(forceSurvey);
+        break;
+      case "setEndUserCreatedAt":
+        Long endUserCreatedAt = call.argument("endUserCreatedAt");
+        if (endUserCreatedAt == null) break;
+        wootric.setEndUserCreatedAt(endUserCreatedAt);
+        break;
+      case "setFirstSurveyAfter":
+        Integer numberOfDays = call.argument("numberOfDays");
+        if (numberOfDays == null) break;
+        wootric.setFirstSurveyDelay(numberOfDays);
+        break;
+      case "passScoreAndTextToURL":
+        Boolean passScoreAndTextToURL = call.argument("passScoreAndTextToURL");
+        if (passScoreAndTextToURL == null) break;
+        WootricCustomThankYou customThankYou = new WootricCustomThankYou();
+        customThankYou.setScoreInUrl(passScoreAndTextToURL);
+        customThankYou.setCommentInUrl(passScoreAndTextToURL);
+        wootric.setCustomThankYou(customThankYou);
+        break;
+      case "showOptOut":
+        Boolean showOptOut = call.argument("showOptOut");
+        if (showOptOut == null) break;
+        wootric.setShowOptOut(showOptOut);
+        break;
+      case "skipFeedbackScreenForPromoter":
+        Boolean skipFeedbackScreenForPromoter = call.argument("skipFeedbackScreenForPromoter");
+        if (skipFeedbackScreenForPromoter == null) break;
+        wootric.shouldSkipFollowupScreenForPromoters(skipFeedbackScreenForPromoter);
+        break;
+      case "setLanguageCode":
+        String languageCode = call.argument("languageCode");
+        if (languageCode == null) break;
+        wootric.setLanguageCode(languageCode);
+        break;
+      case "showWootricSurvey":
+        wootric.survey();
+        break;
     }
   }
 
@@ -107,7 +120,7 @@ public class FlutterWootricPlugin implements FlutterPlugin, MethodCallHandler, A
   }
 
   @Override
-  public void onReattachedToActivityForConfigChanges(ActivityPluginBinding binding) {
+  public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding binding) {
     channel.setMethodCallHandler(null);
   }
 

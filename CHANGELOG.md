@@ -1,3 +1,10 @@
+## 0.1.3
+
+* Dart Null-Safety support
+* Android Embedding V2
+* Updated Wootric SDK
+* Fix for setEndUserCreatedAt method
+
 ## 0.1.2
 
 * Typo fixed

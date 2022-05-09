@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_wootric'
-  s.version          = '0.1.0'
+  s.version          = '0.1.3'
   s.summary          = 'Wrapper around Wootric SDK.'
   s.description      = <<-DESC
 Wrapper around Wootric SDK.
@@ -15,7 +15,7 @@ Wrapper around Wootric SDK.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'WootricSDK', '0.20.0'
+  s.dependency 'WootricSDK', '0.21.1'
 
   s.ios.deployment_target = '9.0'
 end

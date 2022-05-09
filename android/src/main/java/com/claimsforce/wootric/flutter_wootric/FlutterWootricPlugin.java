@@ -71,9 +71,14 @@ public class FlutterWootricPlugin implements FlutterPlugin, MethodCallHandler, A
         wootric.setSurveyImmediately(forceSurvey);
         break;
       case "setEndUserCreatedAt":
-        Long endUserCreatedAt = call.argument("endUserCreatedAt");
+        Object endUserCreatedAt = call.argument("endUserCreatedAt");
+        long _createdAt = -1;
         if (endUserCreatedAt == null) break;
-        wootric.setEndUserCreatedAt(endUserCreatedAt);
+        if (endUserCreatedAt instanceof Long) _createdAt = (Long) endUserCreatedAt;
+        if (endUserCreatedAt instanceof Integer) {
+          _createdAt = Long.valueOf((Integer) endUserCreatedAt);
+        }
+        wootric.setEndUserCreatedAt(_createdAt);
         break;
       case "setFirstSurveyAfter":
         Integer numberOfDays = call.argument("numberOfDays");

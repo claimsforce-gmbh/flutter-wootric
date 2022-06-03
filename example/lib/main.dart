@@ -1,30 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wootric/flutter_wootric.dart';
+import 'dart:async';
 
-void main() => runApp(MyApp());
+import 'package:flutter/services.dart';
+import 'package:wootric/flutter_wootric.dart';
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  String _platformVersion = 'Unknown';
 
   @override
   void initState() {
     super.initState();
-    FlutterWootric.configure(
-      clientId: "<CLIENT_ID>", //TODO Your Wootric Client ID
-      accountToken: "<ACCOUNT_TOKEN>", //TODO Your Wootric Account Token
-    );
-    FlutterWootric.setEndUserEmail('example@test.com');
-    FlutterWootric.setEndUserExternalId('123456789');
-    FlutterWootric.setEndUserPropteries({
-      'country': 'Germany',
-      'age': "36",
+    initPlatformState();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    String platformVersion;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    // We also handle the message potentially returning null.
+    try {
+      platformVersion =
+          await FlutterWootric.platformVersion ?? 'Unknown platform version';
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      _platformVersion = platformVersion;
     });
-    FlutterWootric.forceSurvey(true);
-    FlutterWootric.showSurvey();
   }
 
   @override
@@ -32,13 +51,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Wootric example app'),
+          title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: MaterialButton(
-            onPressed: null,
-            child: Text('Show Wootric Survey'),
-          ),
+          child: Text('Running on: $_platformVersion\n'),
         ),
       ),
     );
